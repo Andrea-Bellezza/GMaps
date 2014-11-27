@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.example.amministratore.gmaps"
+        minSdkVersion 10
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+
+        debug{
+            resValue "string", "google_maps_key", "AIzaSyD_7ToPtsduG1EbNPKVTB7Ak-izQ2uAojE"
+        }
+
+        release {
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //zipAlignEnabled true
+
+            resValue "string", "google_maps_key", "AIzaSyCJGj7M9iYJHFim-c-k1FT0zgD1agCqpsI"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library_maps')
+}
