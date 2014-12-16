@@ -1,1 +1,1 @@
-include ':app', ':library_maps'
+include ':app', ':library_maps', ':push_notification_custom_library'

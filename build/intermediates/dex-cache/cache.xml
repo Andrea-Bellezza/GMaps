@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\classes-de4b13ad34ef82538f34acc663b4290f0a4d5940.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\GMaps\push_notification_custom_library\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ddf6a9a938a8594b8a5aa22e7c39ae73d2ba8a35">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\classes-2c5d251b3dd8e09e9124cafa704386ab7796b650.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.1.71\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0f6d5c1ef2e982c3b7858408e3df389cf5d202da">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\classes-7a9bc7417242b1d92be8f7fed50b4ca7b6ae3b27.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\Documents\adt-bundle-windows-x86_64\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-02c97b6144a64179c6709f3d33a5b0fb75d2d92a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\classes-978d88411f3469be0df6badca8babce351b1e58b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\GMaps\library_maps\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a2bf8da082c9d1e7d54d2351d12ad7e0c130cf57">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\classes-53170608a4d6cdd14a98d2e4a2ddd2feea878e78.jar" />
+    </item>
+    <item
+        jar="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="C:\Users\Amministratore\AndroidStudioProjects\GMaps\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-091688b1793d99afdc7d7e60b8ef01cbc7eade98.jar" />
+    </item>
+
+</items>

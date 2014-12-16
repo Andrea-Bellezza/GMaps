@@ -26,7 +26,7 @@ public class MapsFragment extends Fragment {
         //setUpMapIfNeeded();
         View v = inflater.inflate(R.layout.maps_fragment_layout, container, false);
 
-        mMapView = (MapView) v.findViewById(R.id.map);
+        mMapView = (MapView) v.findViewById(R.id.library_map);
         mMapView.onCreate(savedInstanceState);
         mMapView.onResume();// needed to get the map to display immediately
 

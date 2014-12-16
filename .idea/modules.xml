@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/GMaps.iml" filepath="$PROJECT_DIR$/GMaps.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_maps/library_maps.iml" filepath="$PROJECT_DIR$/library_maps/library_maps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/push_notification_custom_library/push_notification_custom_library.iml" filepath="$PROJECT_DIR$/push_notification_custom_library/push_notification_custom_library.iml" />
     </modules>
   </component>
 </project>

@@ -5,7 +5,7 @@
     android:baselineAligned="false">
 
     <fragment android:name="com.example.amministratore.library_maps.MapsFragment"
-        android:id="@+id/maps_fragment"
+        android:id="@+id/maps_manager_fragment"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent" />

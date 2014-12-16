@@ -27,9 +27,10 @@
 
 
         <activity
-            android:name=".MapsManager_Activity"
+            android:name="com.example.amministratore.library_maps.MapsManager_Activity"
             android:label="@string/title_activity_maps_manager" >
         </activity>
+
     </application>
 
 </manifest>

@@ -1,11 +1,10 @@
 package com.example.amministratore.library_maps;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 
-public class MapsManager_Activity extends ActionBarActivity implements ListFragment.OnFragmentInteractionListener{
+public class MapsManager_Activity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,10 +13,5 @@ public class MapsManager_Activity extends ActionBarActivity implements ListFragm
 
     }
 
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
 }
