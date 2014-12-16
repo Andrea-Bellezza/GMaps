@@ -43,8 +43,7 @@ public class PushNotificationMainActivity extends ActionBarActivity {
 
     private static final int DOOR = 5340;
 
-    public static final String EXTRA_MESSAGE = "message";
-    public static final String PROPERTY_REG_ID = "registration_id";
+    private static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -54,7 +53,7 @@ public class PushNotificationMainActivity extends ActionBarActivity {
      * Substitute you own sender ID here. This is the project number you got
      * from the API Console, as described in "Getting Started."
      */
-    private static String SENDER_ID = "275017101050";
+    private final static String GCM_REG_ID = "275017101050";
 
     /**
      * Tag used on log messages.
@@ -78,11 +77,11 @@ public class PushNotificationMainActivity extends ActionBarActivity {
 
         context = getApplicationContext();
 
-
+        //get String from Notification text
         mDisplay.setText(getIntent().getStringExtra("a"));
-        // Check device for Play Services APK. If check succeeds, proceed with
-        //  GCM registration.
 
+        // Check device for Play Services APK. If check succeeds, proceed with
+        // GCM registration.
         if (checkPlayServices()) {
             gcm = GoogleCloudMessaging.getInstance(this);
             regid = getRegistrationId(context);
@@ -138,35 +137,6 @@ public class PushNotificationMainActivity extends ActionBarActivity {
             }
         }.execute(null, null, null);
     }
-
-    /*
-    public void onClick(final View view) {
-        new AsyncTask() {
-            @Override
-            protected String doInBackground(Object[] params) {
-                String msg = "";
-                try {
-                    Bundle data = new Bundle();
-                    data.putString("my_message", "Hello World");
-                    data.putString("my_action",
-                            "com.google.android.gcm.demo.app.ECHO_NOW");
-                    String id = Integer.toString(msgId.incrementAndGet());
-                    gcm.send(SENDER_ID + "@gcm.googleapis.com", id, data);
-                    msg = "Sent message";
-                } catch (IOException ex) {
-                    msg = "Error :" + ex.getMessage();
-                }
-                return msg;
-            }
-
-            @Override
-            protected void onPostExecute(Object msg) {
-                mDisplay.append(msg + "\n");
-            }
-        }.execute(null, null, null);
-
-    }
-
 
 
     /**
@@ -259,17 +229,8 @@ public class PushNotificationMainActivity extends ActionBarActivity {
                     if (gcm == null) {
                         gcm = GoogleCloudMessaging.getInstance(context);
                     }
-                    regid = gcm.register(SENDER_ID);
+                    regid = gcm.register(GCM_REG_ID);
                     msg = "Device registered, registration ID=" + regid;
-
-                    // You should send the registration ID to your server over HTTP,
-                    // so it can use GCM/HTTP or CCS to send messages to your app.
-                    // The request to your server should be authenticated if your app
-                    // is using accounts.
-
-                    // For this demo: we don't need to send it because the device
-                    // will send upstream messages to a server that echo back the
-                    // message using the 'from' address in the message.
 
                     // Persist the regID - no need to register again.
                     storeRegistrationId(context, regid);
@@ -313,33 +274,31 @@ public class PushNotificationMainActivity extends ActionBarActivity {
 
 
     private void sendRegistrationIdToBackend() {
-        socket_SendID();
-//      HTTP_sendID();
-
+        //socket_SendID();
+        HTTP_sendID();
     }
 
 
     private void HTTP_sendID(){
 
-        // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        //HttpPost httppost = new HttpPost("http://"+ SERVER_IP);
+        //TODO: temporary URL for testing HTTP post
         HttpPost httppost = new HttpPost("http://posttestserver.com/post.php");
-
 
         try {
             // Add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 
             //TODO: temporary string
-            nameValuePairs.add(new BasicNameValuePair("Regid", "12345"));
-            //nameValuePairs.add(new BasicNameValuePair("stringdata", "AndDev is Cool!"));
+            nameValuePairs.add(new BasicNameValuePair("Regid", regid));
 
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
-            Log.w("",response.toString());
+
+            mDisplay.setText(response.getStatusLine().getStatusCode());
+            Log.w("HTTP_POST Response", ""+response.getStatusLine().getStatusCode());
 
         } catch (Exception e) {
             e.printStackTrace();

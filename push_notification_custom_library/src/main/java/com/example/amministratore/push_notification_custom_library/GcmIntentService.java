@@ -75,7 +75,6 @@ public class GcmIntentService extends IntentService {
                 new Intent(this, PushNotificationMainActivity.class)
                         .putExtra("a",msg)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
         , PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder =
