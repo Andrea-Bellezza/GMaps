@@ -18,12 +18,10 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -31,28 +29,27 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.ConnectException;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class PushNotificationMainActivity extends ActionBarActivity {
 
 //  private static final String SERVER_IP = "192.168.1.100";
-    private static final String SERVER_IP = "192.168.16.118";
+    private static final String SERVER_IP = "192.168.16.119";
 
     private static final int DOOR = 5340;
+//  private static String URL = "http://posttestserver.com/post.php" ;   //URL for testing HTTP post
+    private static final String URL = "http://"+SERVER_IP+":"+DOOR+"/test" ;   //URL for local server
 
     private static final String PROPERTY_REG_ID = "registration_id";
+
+    //TODO: change the path where he get tha app version
     private static final String PROPERTY_APP_VERSION = "appVersion";
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
-    /**
+
     //TODO: find better place to store it
-     * Substitute you own sender ID here. This is the project number you got
-     * from the API Console, as described in "Getting Started."
-     */
+
     private final static String GCM_REG_ID = "275017101050";
 
     /**
@@ -62,7 +59,6 @@ public class PushNotificationMainActivity extends ActionBarActivity {
 
     private static TextView mDisplay;
     private static GoogleCloudMessaging gcm;
-    private static AtomicInteger msgId = new AtomicInteger();
     private static Context context;
 
     private static String regid;
@@ -78,7 +74,7 @@ public class PushNotificationMainActivity extends ActionBarActivity {
         context = getApplicationContext();
 
         //get String from Notification text
-        mDisplay.setText(getIntent().getStringExtra("a"));
+        mDisplay.setText("Text: " + getIntent().getStringExtra("a"));
 
         // Check device for Play Services APK. If check succeeds, proceed with
         // GCM registration.
@@ -282,23 +278,23 @@ public class PushNotificationMainActivity extends ActionBarActivity {
     private void HTTP_sendID(){
 
         HttpClient httpclient = new DefaultHttpClient();
-        //TODO: temporary URL for testing HTTP post
-        HttpPost httppost = new HttpPost("http://posttestserver.com/post.php");
+        HttpPost httppost = new HttpPost(URL);
 
         try {
-            // Add your data
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            //TODO: to substitute regid with a Json
+            StringEntity entity = new StringEntity(regid);
+            httppost.setEntity(entity);
 
-            //TODO: temporary string
-            nameValuePairs.add(new BasicNameValuePair("Regid", regid));
+            final HttpResponse response = httpclient.execute(httppost);
 
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mDisplay.setText(Integer.toString(response.getStatusLine().getStatusCode()));
+                }
+            });
 
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-
-            mDisplay.setText(response.getStatusLine().getStatusCode());
-            Log.w("HTTP_POST Response", ""+response.getStatusLine().getStatusCode());
+            Log.w("HTTP_POST Response", Integer.toString(response.getStatusLine().getStatusCode()));
 
         } catch (Exception e) {
             e.printStackTrace();
